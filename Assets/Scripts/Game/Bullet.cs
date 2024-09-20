@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.forward = Rigidbody.velocity;
+        transform.forward = Rigidbody.linearVelocity;
     }
 
     private void OnCollisionEnter(Collision other) {
