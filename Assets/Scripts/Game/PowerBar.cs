@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Composant qui affiche la jauge de force.
+/// </summary>
 public class PowerBar : MonoBehaviour
 {
     public Image Value;

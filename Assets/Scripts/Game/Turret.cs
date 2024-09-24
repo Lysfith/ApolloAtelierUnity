@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Composant qui gère le canon.
+/// </summary>
 public class Turret : MonoBehaviour
 {
     public float AngleMax = -50;

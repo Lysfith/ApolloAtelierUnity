@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Composant qui affiche le score du joueur
+/// </summary>
 public class Score : MonoBehaviour
 {
     public TMP_Text Text;

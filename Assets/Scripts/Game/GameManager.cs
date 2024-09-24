@@ -10,22 +10,22 @@ public enum GameState
     WaitResolution
 }
 
+/// <summary>
+/// COmposant qui gère la boucle de gameplay.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public GameState State;
     public Turret Turret;
     public PowerBar PowerBar;
     public Score Score;
-    public GameObject WallPrefab;
-    public Transform WallRoot;
 
     private int _score;
     
     void Start()
     {
-        WallPrefab.SetActive(false);
         _score = 0;
-        SpawnWalls();
+        //SpawnWalls();
         State = GameState.AngleSelection;
         Turret.StartAngleSelection();
     }
@@ -57,25 +57,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnWalls(){
-        ClearWalls();
-        var wall = Instantiate(WallPrefab);
-        wall.transform.SetParent(WallRoot);
-        wall.transform.localPosition = Vector3.zero;
-        wall.SetActive(true);
-    }
-
-    private void ClearWalls(){
-        foreach (Transform child in WallRoot.transform) {
-            GameObject.Destroy(child.gameObject);
-        }
-    }
-
     IEnumerator WaitResolution(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         PowerBar.HidePowerBar();
-        SpawnWalls();
+        //SpawnWalls();
         State = GameState.AngleSelection;
         Turret.StartAngleSelection();
     }
