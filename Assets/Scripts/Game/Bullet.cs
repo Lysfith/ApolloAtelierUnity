@@ -9,6 +9,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody Rigidbody;
+    public TrailRenderer TrailRenderer;
 
     private bool _hasCollide = false;
     
@@ -23,6 +24,19 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
+        if(_hasCollide)
+        {
+            return;
+        }
         _hasCollide = true;
+        TrailRenderer.gameObject.SetActive(false);
+        StartCoroutine(WaitDeath(5));
+    }
+
+    IEnumerator WaitDeath(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Debug.Log($"Bullet {gameObject.GetInstanceID()} destroyed !");
+        Destroy(gameObject);
     }
 }
